@@ -6,6 +6,7 @@ using System;
 
 public class Karaoke : MonoBehaviour
 {
+    public Animator anim;
     public Data data;
     [Serializable]
     public class Data
@@ -27,7 +28,7 @@ public class Karaoke : MonoBehaviour
     public float timer;
     void Start()
     {
-        image.enabled = false;
+        anim.gameObject.SetActive(false);
         data = JsonUtility.FromJson<Data>(textAsset.text);
     }
     System.Action OnDone;
@@ -36,7 +37,6 @@ public class Karaoke : MonoBehaviour
         this.OnDone = OnDone;
         timer = 0;
         id = 0;
-        print(animName);
         subsActive = AllDataFor(animName);
 
     }
@@ -65,26 +65,26 @@ public class Karaoke : MonoBehaviour
         }
         if (timer > subDataActive.salida)
         {
-            image.enabled = false;
-              if (id >= subsActive.Count)
+            anim.Play("subs_off");
+            if (id >= subsActive.Count)
                 Done();
         } else
         if (timer > subDataActive.entrada)
         {
-            
-            image.enabled = true;
+            anim.gameObject.SetActive(true);
+            anim.Play("subs_on");
             image.sprite = Resources.Load<Sprite>("Karaoke/" + subDataActive.png);
-          
+            image.SetNativeSize();
         }        
     }
     public void Reset()
     {
-        image.enabled = false;
         subsActive.Clear();
     }
     void Done()
     {
         OnDone();
         Reset();
+        anim.Play("subs_off");
     }
 }
