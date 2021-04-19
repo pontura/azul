@@ -7,7 +7,6 @@ using System;
 public class Karaoke : MonoBehaviour
 {
     public GameObject[] positionsGO;
-    public List<Vector2> positions;
     public Animator anim;
     public Data data;
     [Serializable]
@@ -32,8 +31,7 @@ public class Karaoke : MonoBehaviour
     {
         foreach (GameObject go in positionsGO)
         {
-            positions.Add(go.transform.position);
-            go.SetActive(false);
+            go.GetComponent<Image>().enabled = (false);
         }
         anim.gameObject.SetActive(false);
         data = JsonUtility.FromJson<Data>(textAsset.text);
@@ -41,6 +39,7 @@ public class Karaoke : MonoBehaviour
     System.Action OnDone;
     public void Init(string animName, System.Action OnDone)
     {
+        CancelInvoke();
         idLoaded = -1;
         this.OnDone = OnDone;
         timer = 0;
@@ -88,18 +87,21 @@ public class Karaoke : MonoBehaviour
                 anim.Play("subs_on");
                 image.sprite = Resources.Load<Sprite>("Karaoke/" + subDataActive.png);
                 image.SetNativeSize();
-                image.transform.position = positions[UnityEngine.Random.Range(0, positions.Count)];
+                image.transform.SetParent(positionsGO[UnityEngine.Random.Range(0, positionsGO.Length)].transform);
+                image.transform.localScale = Vector3.one;
+                image.transform.localPosition = Vector3.zero;
             }
         }
     }
     public void Reset()
     {
         subsActive.Clear();
+        anim.gameObject.SetActive(false);
     }
     void Done()
     {
         OnDone();
-        Reset();
+        Invoke("Reset", 0.25f);
         anim.Play("subs_off");
     }
 }
