@@ -6,6 +6,8 @@ using System;
 
 public class Karaoke : MonoBehaviour
 {
+    public GameObject[] positionsGO;
+    public List<Vector2> positions;
     public Animator anim;
     public Data data;
     [Serializable]
@@ -28,12 +30,18 @@ public class Karaoke : MonoBehaviour
     public float timer;
     void Start()
     {
+        foreach (GameObject go in positionsGO)
+        {
+            positions.Add(go.transform.position);
+            go.SetActive(false);
+        }
         anim.gameObject.SetActive(false);
         data = JsonUtility.FromJson<Data>(textAsset.text);
     }
     System.Action OnDone;
     public void Init(string animName, System.Action OnDone)
     {
+        idLoaded = -1;
         this.OnDone = OnDone;
         timer = 0;
         id = 0;
@@ -50,6 +58,7 @@ public class Karaoke : MonoBehaviour
         }
         return arr;
     }
+    int idLoaded;
     void Update()
     {
         if (subsActive == null || subsActive.Count == 0)
@@ -68,14 +77,20 @@ public class Karaoke : MonoBehaviour
             anim.Play("subs_off");
             if (id >= subsActive.Count)
                 Done();
-        } else
+        }
+        else
         if (timer > subDataActive.entrada)
         {
-            anim.gameObject.SetActive(true);
-            anim.Play("subs_on");
-            image.sprite = Resources.Load<Sprite>("Karaoke/" + subDataActive.png);
-            image.SetNativeSize();
-        }        
+            if (idLoaded != id)
+            {
+                idLoaded = id;
+                anim.gameObject.SetActive(true);
+                anim.Play("subs_on");
+                image.sprite = Resources.Load<Sprite>("Karaoke/" + subDataActive.png);
+                image.SetNativeSize();
+                image.transform.position = positions[UnityEngine.Random.Range(0, positions.Count)];
+            }
+        }
     }
     public void Reset()
     {
