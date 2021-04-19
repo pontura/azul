@@ -34,7 +34,8 @@ public class Character : MonoBehaviour
     public void RandomAnim()
     {
         karaoke.Reset();
-        Events.PlaySound("ui", "Audio/clickNOTFly_sound", false);
+        int a = UnityEngine.Random.Range(1, 6);
+        Events.PlaySound("ui", "Audio/clickNOTFly_sound" + a, false);
         data = all[id];
 
         string animName = all[id].clip.name;
