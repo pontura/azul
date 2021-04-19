@@ -1,0 +1,187 @@
+{
+"Subs":
+[
+	{
+		"anim":"cleaningFace",
+		"png":"01_subs_",
+		"entrada": 6 ,
+		"salida": 8
+	},
+	{
+		"anim":"cleaningFace",
+		"png":"02_subs_",
+		"entrada": 9,
+		"salida": 16
+	},
+	{
+		"anim":"cleaningFace",
+		"png":"03_subs_",
+		"entrada": 17,
+		"salida": 22
+	},
+	{
+		"anim":"cleaningFeet",
+		"png":"04_subs_",
+		"entrada": 5,
+		"salida": 10
+	},
+	{
+		"anim":"cleaningFeet",
+		"png":"05_subs_",
+		"entrada": 12,
+		"salida": 17
+	},
+	{
+		"anim":"cleaningHands",
+		"png":"06_subs_",
+		"entrada": 4,
+		"salida": 10
+	},
+	{
+		"anim":"cleaningHands",
+		"png":"07_subs_",
+		"entrada": 11,
+		"salida": 18
+	},
+	{
+		"anim":"cleaningHands",
+		"png":"08_subs_",
+		"entrada": 19,
+		"salida": 24
+	},
+	{
+		"anim":"cleaningHands",
+		"png":"09_subs_",
+		"entrada": 25,
+		"salida": 28
+	},
+	{
+		"anim":"cleaningHands",
+		"png":"10_subs_",
+		"entrada": 29,
+		"salida": 34
+	},
+	{
+		"anim":"cleaningHands",
+		"png":"11_subs_",
+		"entrada": 37,
+		"salida": 42
+	},
+	{
+		"anim":"cleaningHands",
+		"png":"12_subs_",
+		"entrada": 43,
+		"salida": 48
+	},
+	{
+		"anim":"cleaningHands",
+		"png":"13_subs_",
+		"entrada": 51,
+		"salida": 56
+	},
+	{
+		"anim":"cleaningHands",
+		"png":"14_subs_",
+		"entrada": 57,
+		"salida": 66
+	},
+	{
+		"anim":"flying",
+		"png":"15_subs_",
+		"entrada": 2,
+		"salida": 5
+	},
+	{
+		"anim":"flying",
+		"png":"16_subs_",
+		"entrada": 6,
+		"salida": 10
+	},
+	{
+		"anim":"flying",
+		"png":"17_subs_",
+		"entrada": 11,
+		"salida": 14
+	},
+	{
+		"anim":"flying",
+		"png":"18_subs_",
+		"entrada": 16,
+		"salida": 21
+	},
+	{
+		"anim":"flying",
+		"png":"19_subs_",
+		"entrada": 22,
+		"salida": 24
+	},
+	{
+		"anim":"completeTurn",
+		"png":"20_subs_",
+		"entrada": 6,
+		"salida": 10
+	},
+	{
+		"anim":"completeTurn",
+		"png":"21_subs_",
+		"entrada": 11,
+		"salida": 14
+	},
+	{
+		"anim":"completeTurn",
+		"png":"22_subs_",
+		"entrada": 14, 
+		"salida": 16
+	},
+	{
+		"anim":"completeTurn",
+		"png":"23_subs_",
+		"entrada": 17,
+		"salida": 22
+	},
+	{
+		"anim":"dropDead",
+		"png":"24_subs_",
+		"entrada": 3,
+		"salida": 6 
+	},
+	{
+		"anim":"dropDead",
+		"png":"25_subs_",
+		"entrada": 7,
+		"salida": 13
+	},
+	{
+		"anim":"dropDead",
+		"png":"26_subs_",
+		"entrada": 15,
+		"salida": 19
+	},
+	{
+		"anim":"dropDead",
+		"png":"27_subs_",
+		"entrada": 20,
+		"salida": 24
+	},
+	{
+		"anim":"dropDead",
+		"png":"28_subs_",
+		"entrada": 25,
+		"salida": 33
+	},
+	{
+		"anim":"dropDead",
+		"png":"29_subs_",
+		"entrada": 34,
+		"salida": 46
+	},
+	{
+		
+		"anim":"dropDead",
+		"png":"30_subs_",
+		"entrada": 47,
+		"salida": 62 
+	}
+]
+}
+	
