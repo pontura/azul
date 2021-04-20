@@ -27,6 +27,7 @@ public class Karaoke : MonoBehaviour
     public int id;
     public List<SubData> subsActive;
     public float timer;
+    public float songDuration;
     void Start()
     {
         foreach (GameObject go in positionsGO)
@@ -39,13 +40,24 @@ public class Karaoke : MonoBehaviour
     System.Action OnDone;
     public void Init(string animName, System.Action OnDone)
     {
+        songDuration = 0;
         CancelInvoke();
         idLoaded = -1;
         this.OnDone = OnDone;
         timer = 0;
         id = 0;
         subsActive = AllDataFor(animName);
-
+        bool loop = false;
+        if (subsActive.Count == 0)
+            loop = true;
+        Events.PlaySound("music", "Music/" + animName, loop);
+        print("karaoke: " + animName);
+        Invoke("CalculateSongDuration", 1);
+    }
+    void CalculateSongDuration()
+    {
+        AudioSource asss = GetComponent<AudioManager>().GetAudioSource("music");
+        songDuration = asss.clip.length;
     }
     public List<SubData> AllDataFor(string animName)
     {
@@ -64,7 +76,11 @@ public class Karaoke : MonoBehaviour
             return;
 
         timer += Time.deltaTime;
-
+        if (songDuration>1 && timer > songDuration)
+        {
+            Done();
+            return;
+        }
         SubData subDataActive = subsActive[id];
 
         if(id<subsActive.Count-1 &&  timer> subsActive[id+1].entrada)

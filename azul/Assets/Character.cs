@@ -28,6 +28,7 @@ public class Character : MonoBehaviour
     }
     void OnDoneKaraoke()
     {
+        print("OnDoneKaraoke");
         Events.PlaySound("music", "Music/" + defaultAnim, false);
         anim.CrossFade(defaultAnim, 1);
     }
@@ -44,9 +45,10 @@ public class Character : MonoBehaviour
             id = 0;
 
         if (animName == defaultAnim)
+        {
             RandomAnim();
-
-        Events.PlaySound("music", "Music/" + animName, false);
+            return;
+        }
         karaoke.Init(animName, OnDoneKaraoke);
         //if (currentClip == "singing")
         //{

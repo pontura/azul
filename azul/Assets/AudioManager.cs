@@ -45,7 +45,7 @@ public class AudioManager : MonoBehaviour
         audioSource.Play();
         audioSource.loop = loop;
     }
-    AudioSource GetAudioSource(string sourceName)
+    public AudioSource GetAudioSource(string sourceName)
     {
         foreach (AudioSourceManager m in all)
             if (m.sourceName == sourceName)
